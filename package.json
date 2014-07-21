@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "generate DTMF tones like a touchtone phone",
   "main": "index.js",
+  "bin": {
+    "touchtone": "bin/cmd.js"
+  },
   "dependencies": {
     "baudio": "^2.1.2",
     "defined": "~0.0.0",
