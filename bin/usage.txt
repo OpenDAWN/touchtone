@@ -1,0 +1,23 @@
+USAGE
+
+  touchtone {OPTIONS} NUMBER
+
+INFO
+
+  Play the DTMF tones for NUMBER on the system audio device.
+
+OPTIONS
+
+  -d --duration  Time in seconds to play each tone.
+
+  -p --pause     Time in seconds to pause between tones.
+
+  -v --volume    Volume: higher than 1: louder, lower than 1: softer.
+
+  -h --help      Show this message.
+
+EXAMPLE
+  
+  touchtone 18005551212
+  touchtone '*69'
+
