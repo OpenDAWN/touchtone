@@ -8,5 +8,7 @@ var argv = minimist(process.argv.slice(2), {
 var tone = touchtone(argv);
 var keys = argv._.join('').split('');
 keys.forEach(function (key) { tone.press(key) });
+tone.on('ready', function () { b.end() });
 
-baudio(tone.play()).play();
+var b = baudio(tone.play());
+b.play();

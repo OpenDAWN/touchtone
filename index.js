@@ -1,4 +1,7 @@
 var defined = require('defined');
+var EventEmitter = require('events').EventEmitter;
+var inherits = require('inherits');
+
 var columns = [ 1209, 1336, 1477, 1633 ];
 var rows = [ 697, 770, 852, 941 ];
 var labels = '123a456b789c*0#d'.split('');
@@ -13,6 +16,7 @@ for (var i = 0; i < rows.length; i++) {
 
 module.exports = Touchtone;
 module.exports.tones = tones;
+inherits(Touchtone, EventEmitter);
 
 function Touchtone (opts) {
     if (!(this instanceof Touchtone)) return new Touchtone(opts);
@@ -39,10 +43,10 @@ Touchtone.prototype.play = function () {
             tone[1] = t;
         }
         if (tone[0] === 'pause' && tone[1] < t - self._pause) {
-            self._tones.shift();
+            shift();
         }
         else if (tone[1] < t - self._duration) {
-            self._tones.shift();
+            shift();
             return 0;
         }
         if (tone[0] === 'pause') return 0;
@@ -50,4 +54,11 @@ Touchtone.prototype.play = function () {
         
         function sin (x) { return Math.sin(2 * Math.PI * x * t) }
     };
+    
+    function shift () {
+        self._tones.shift();
+        if (self._tones.length === 0) {
+            self.emit('ready');
+        }
+    }
 };
