@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "webaudio": "*"
+  },
+  "scripts": {
+    "build": "browserify browser.js -o bundle.js"
+  }
+}
