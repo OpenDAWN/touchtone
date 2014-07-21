@@ -1,6 +1,6 @@
 {
   "name": "touchtone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate DTMF tones like a touchtone phone",
   "main": "index.js",
   "bin": {
