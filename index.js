@@ -11,7 +11,7 @@ var tones = {};
 for (var i = 0; i < rows.length; i++) {
     for (var j = 0; j < columns.length; j++) {
         var lb = labels.shift();
-        tones[lb] = [ rows[i], columns[j] ];
+        tones[lb] = tones[lb.toUpperCase()] = [ rows[i], columns[j] ];
     }
 }
 
@@ -24,7 +24,7 @@ function Touchtone (opts) {
     if (!opts) opts = {};
     this._duration = opts.duration || 1/8;
     this._pause = defined(opts.pause, this._duration / 4);
-    this._tones = [];
+    this._tones = [ [ 'pause', null ] ];
     this._volume = defined(opts.volume, 1);
 }
 
@@ -67,7 +67,9 @@ Touchtone.prototype.play = function () {
     function shift () {
         self._tones.shift();
         if (self._tones.length === 0) {
-            self.emit('ready');
+            process.nextTick(function (t) {
+                self.emit('ready');
+            });
         }
     }
 };
