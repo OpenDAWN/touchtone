@@ -1,6 +1,7 @@
 var defined = require('defined');
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('inherits');
+var isarray = require('isarray');
 
 var columns = [ 1209, 1336, 1477, 1633 ];
 var rows = [ 697, 770, 852, 941 ];
@@ -32,6 +33,14 @@ Touchtone.prototype.press = function (key) {
     if (!t) return;
     this._tones.push([ t, null ]);
     if (this._pause) this._tones.push([ 'pause', null ]);
+};
+
+Touchtone.prototype.dial = function (number) {
+    var self = this;
+    if (!isarray(number)) {
+        number = String(number).split('');
+    }
+    number.forEach(function (n) { self.press(n) });
 };
 
 Touchtone.prototype.play = function () {
