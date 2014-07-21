@@ -20,6 +20,7 @@ function Touchtone (opts) {
     this._duration = opts.duration || 1/8;
     this._pause = defined(opts.pause, this._duration / 4);
     this._tones = [];
+    this._volume = defined(opts.volume, 1);
 }
 
 Touchtone.prototype.press = function (key) {
@@ -45,7 +46,7 @@ Touchtone.prototype.play = function () {
             return 0;
         }
         if (tone[0] === 'pause') return 0;
-        return (sin(tone[0][0]) + sin(tone[0][1])) / 2;
+        return self._volume * (sin(tone[0][0]) + sin(tone[0][1])) / 2;
         
         function sin (x) { return Math.sin(2 * Math.PI * x * t) }
     };
