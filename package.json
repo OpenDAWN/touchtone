@@ -1,0 +1,34 @@
+{
+  "name": "touchtone",
+  "version": "1.0.0",
+  "description": "generate DTMF tones like a touchtone phone",
+  "main": "index.js",
+  "dependencies": {
+    "baudio": "^2.1.2",
+    "defined": "~0.0.0",
+    "inherits": "^2.0.1",
+    "isarray": "~0.0.1",
+    "minimist": "~0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/touchtone.git"
+  },
+  "homepage": "https://github.com/substack/touchtone",
+  "keywords": [
+    "dtmf",
+    "phone",
+    "telephony",
+    "telephone",
+    "keypad",
+    "baudio",
+    "sound",
+    "audio"
+  ],
+  "author": {
+    "name": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net"
+  },
+  "license": "MIT"
+}
