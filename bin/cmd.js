@@ -6,7 +6,8 @@ var touchtone = require('../');
 var minimist = require('minimist');
 
 var argv = minimist(process.argv.slice(2), {
-    alias: { d: 'duration', p: 'pause', v: 'volume', h: 'help' }
+    alias: { d: 'duration', p: 'pause', v: 'volume', h: 'help' },
+    string: '_'
 });
 
 if (argv.help) {
